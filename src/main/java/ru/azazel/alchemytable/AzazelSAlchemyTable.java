@@ -8,6 +8,7 @@ import ru.azazel.alchemytable.block.ModBlocks;
 import ru.azazel.alchemytable.block.entity.ModBlockEntities;
 import ru.azazel.alchemytable.menu.ModMenuTypes;
 import ru.azazel.alchemytable.item.ModItems;
+import ru.azazel.alchemytable.entity.ModEntities;
 
 public class AzazelSAlchemyTable implements ModInitializer {
 
