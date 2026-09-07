@@ -7,6 +7,9 @@ import net.minecraft.client.renderer.RenderType;
 import ru.azazel.alchemytable.block.ModBlocks;
 import ru.azazel.alchemytable.client.screen.AlchemyTableScreen;
 import ru.azazel.alchemytable.menu.ModMenuTypes;
+import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
+import net.minecraft.client.renderer.entity.ThrownItemRenderer;
+import ru.azazel.alchemytable.entity.ModEntities;
 
 public class AzazelSAlchemyTableClient implements ClientModInitializer {
 
@@ -21,5 +24,9 @@ public class AzazelSAlchemyTableClient implements ClientModInitializer {
                 ModMenuTypes.ALCHEMY_TABLE_MENU,
                 AlchemyTableScreen::new
         );
+        EntityRendererRegistry.register(
+        ModEntities.LIGHT_PROJECTILE,
+        ThrownItemRenderer::new
+);
     }
 }
