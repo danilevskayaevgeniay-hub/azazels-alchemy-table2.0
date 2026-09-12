@@ -20,6 +20,31 @@ public final class ModItems {
             AzazelSAlchemyTable.id("light_magic_wand"),
             new ChargedMagicWandItem(new Item.Properties().stacksTo(1))
     );
+    public static final Item FLAME_MAGIC_WAND = Registry.register(
+            BuiltInRegistries.ITEM,
+            AzazelSAlchemyTable.id("flame_magic_wand"),
+            new ChargedMagicWandItem(new Item.Properties().stacksTo(1))
+    );
+    public static final Item SEA_MAGIC_WAND = Registry.register(
+            BuiltInRegistries.ITEM,
+            AzazelSAlchemyTable.id("sea_magic_wand"),
+            new ChargedMagicWandItem(new Item.Properties().stacksTo(1))
+    );
+    public static final Item REDSTONE_MAGIC_WAND = Registry.register(
+            BuiltInRegistries.ITEM,
+            AzazelSAlchemyTable.id("redstone_magic_wand"),
+            new ChargedMagicWandItem(new Item.Properties().stacksTo(1))
+    );
+    public static final Item SEEKING_MAGIC_WAND = Registry.register(
+            BuiltInRegistries.ITEM,
+            AzazelSAlchemyTable.id("seeking_magic_wand"),
+            new ChargedMagicWandItem(new Item.Properties().stacksTo(1))
+    );
+    public static final Item WIND_MAGIC_WAND = Registry.register(
+            BuiltInRegistries.ITEM,
+            AzazelSAlchemyTable.id("wind_magic_wand"),
+            new ChargedMagicWandItem(new Item.Properties().stacksTo(1))
+    );
 
     public static void registerModItems() {
         ItemGroupEvents.modifyEntriesEvent(
@@ -27,6 +52,11 @@ public final class ModItems {
         ).register(entries -> {
             entries.accept(MAGIC_WAND);
             entries.accept(LIGHT_MAGIC_WAND);
+            entries.accept(FLAME_MAGIC_WAND);
+            entries.accept(SEA_MAGIC_WAND);
+            entries.accept(WIND_MAGIC_WAND);
+            entries.accept(SEEKING_MAGIC_WAND);
+            entries.accept(REDSTONE_MAGIC_WAND);
         });
     }
 
