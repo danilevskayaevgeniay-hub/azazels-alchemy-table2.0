@@ -34,7 +34,7 @@ public class FlameProjectile extends ThrowableItemProjectile {
                 getY(),
                 getZ(),
                 1.5F,
-                Level.ExplosionInteractions.NONE
+                Level.ExplosionInteraction.NONE
             );
             discard();
         }
