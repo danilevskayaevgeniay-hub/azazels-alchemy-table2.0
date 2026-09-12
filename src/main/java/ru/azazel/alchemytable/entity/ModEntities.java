@@ -17,6 +17,15 @@ public final class ModEntities {
                     .updateInterval(10)
                     .build()
     );
+    public static final EntityType<FlameProjectile> FLAME_PROJECTILE = Registry.register(
+            BuiltInRegistries.ENTITY_TYPE,
+            AzazelSAlchemyTable.id("flame_projectile"),
+            EntityType.Builder.<FlameProjectile>of(FlameProjectile::new, MobCategory.MISC)
+                    .sized(0.25F, 0.25F)
+                    .clientTrackingRange(4)
+                    .updateInterval(10)
+                    .build()
+    );
 
     public static void registerModEntities() {
         AzazelSAlchemyTable.LOGGER.info("Registering projectile entities");
