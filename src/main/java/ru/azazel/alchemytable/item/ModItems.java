@@ -28,7 +28,7 @@ public final class ModItems {
     public static final Item SEA_MAGIC_WAND = Registry.register(
             BuiltInRegistries.ITEM,
             AzazelSAlchemyTable.id("sea_magic_wand"),
-            new ChargedMagicWandItem(new Item.Properties().stacksTo(1))
+            new SeaMagicWandItem(new Item.Properties().stacksTo(1))
     );
     public static final Item REDSTONE_MAGIC_WAND = Registry.register(
             BuiltInRegistries.ITEM,
