@@ -9,9 +9,9 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 
-public class WaterMagicWandItem extends Item {
+public class SeaMagicWandItem extends Item {
 
-    public WaterMagicWandItem(Properties properties) {
+    public SeaMagicWandItem(Properties properties) {
         super(properties);
     }
 
