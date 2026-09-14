@@ -39,7 +39,7 @@ public class SeekingMagicWandItem extends Item {
                 mob.addEffect(
                         new MobEffectInstance(
                                 MobEffects.GLOWING,
-                                600,
+                                1200,
                                 0
                         )
                 );
