@@ -26,7 +26,7 @@ public final class ModEntities {
                     .updateInterval(10)
                     .build()
     );
-    public static final EntityType<FlameProjectile> WIND_PROJECTILE = Registry.register(
+    public static final EntityType<WindProjectile> WIND_PROJECTILE = Registry.register(
             BuiltInRegistries.ENTITY_TYPE,
             AzazelSAlchemyTable.id("wind_projectile"),
             EntityType.Builder.<WindProjectile>of(WindProjectile::new, MobCategory.MISC)
