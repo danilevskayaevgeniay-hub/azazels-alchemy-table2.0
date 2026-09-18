@@ -43,7 +43,7 @@ public final class ModItems {
     public static final Item WIND_MAGIC_WAND = Registry.register(
             BuiltInRegistries.ITEM,
             AzazelSAlchemyTable.id("wind_magic_wand"),
-            new ChargedMagicWandItem(new Item.Properties().stacksTo(1))
+            new WindMagicWandItem(new Item.Properties().stacksTo(1))
     );
 
     public static void registerModItems() {
