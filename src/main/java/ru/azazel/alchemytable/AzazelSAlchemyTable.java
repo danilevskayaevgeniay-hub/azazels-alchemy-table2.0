@@ -28,7 +28,7 @@ public class AzazelSAlchemyTable implements ModInitializer {
         FabricDefaultAttributeRegistry.register(
             ModEntities.CRYSTAL_SPIDER,
             Spider.createAttributes()
-        )
+        );
 
         LOGGER.info("Azazel's Alchemy Table initialized");
     }
