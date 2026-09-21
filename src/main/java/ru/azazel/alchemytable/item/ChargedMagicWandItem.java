@@ -36,6 +36,8 @@ public class ChargedMagicWandItem extends Item {
             );
 
             level.addFreshEntity(projectile);
+
+            player.getCooldowns().addCooldown(this, 20);
         }
 
         return InteractionResultHolder.sidedSuccess(
