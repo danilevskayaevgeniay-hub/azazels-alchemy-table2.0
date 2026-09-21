@@ -44,6 +44,8 @@ public class SeekingMagicWandItem extends Item {
                         )
                 );
             }
+
+            player.getCooldowns().addCooldown(this, 20);
         }
 
         return InteractionResultHolder.sidedSuccess(
