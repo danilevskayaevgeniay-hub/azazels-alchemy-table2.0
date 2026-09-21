@@ -33,6 +33,8 @@ public class SeaMagicWandItem extends Item {
                             0
                     )
             );
+
+            player.getCooldowns().addCooldown(this, 20);
         }
 
         return InteractionResultHolder.sidedSuccess(
