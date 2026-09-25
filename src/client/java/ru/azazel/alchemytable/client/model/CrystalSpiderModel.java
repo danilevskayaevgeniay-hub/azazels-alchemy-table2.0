@@ -21,7 +21,7 @@ public class CrystalSpiderModel extends EntityModel<CrystalSpider> {
 	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation("modid", "crystal_spider"), "main");
 	private final ModelPart bb_main;
 
-	public crystal_spider(ModelPart root) {
+	public CrystalSpiderModel(ModelPart root) {
 		this.bb_main = root.getChild("bb_main");
 	}
 
