@@ -40,5 +40,14 @@ public class AzazelSAlchemyTableClient implements ClientModInitializer {
         ModEntities.REDSTONE_PROJECTILE,
         ThrownItemRenderer::new
 );
+        EntityModelLayerRegistry.registerModelLayer(
+                CrystalSpiderModel.LAYER_LOCATION,
+                CrystalSpiderModel::createBodyLayer
+);
+
+        EntityRendererRegistry.register(
+                ModEntities.CRYSTAL_SPIDER,
+                CrystalSpiderRenderer::new
+);
     }
 }
