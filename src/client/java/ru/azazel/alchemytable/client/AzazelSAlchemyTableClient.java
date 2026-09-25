@@ -10,6 +10,8 @@ import ru.azazel.alchemytable.menu.ModMenuTypes;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 import ru.azazel.alchemytable.entity.ModEntities;
+import ru.azazel.alchemytable.client.model.CrystalSpiderModel;
+import ru.azazel.alchemytable.client.renderer.CrystalSpiderRenderer;
 
 public class AzazelSAlchemyTableClient implements ClientModInitializer {
 
