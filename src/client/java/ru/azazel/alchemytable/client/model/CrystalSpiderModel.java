@@ -19,7 +19,7 @@ import ru.azazel.alchemytable.entity.CrystalSpider;
 
 public class CrystalSpiderModel extends EntityModel<CrystalSpider> {
 	// This layer location should be baked with EntityRendererProvider.Context in the entity renderer and passed into this model's constructor
-	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new AzazelSAlchemyTable.id("crystal_spider"), "main");
+	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(AzazelSAlchemyTable.id("crystal_spider"), "main");
 	private final ModelPart bb_main;
 
 	public CrystalSpiderModel(ModelPart root) {
@@ -68,7 +68,19 @@ public class CrystalSpiderModel extends EntityModel<CrystalSpider> {
 	}
 
 	@Override
-	public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha) {
-		bb_main.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
+	public void renderToBuffer(
+        PoseStack poseStack,
+        VertexConsumer vertexConsumer,
+        int packedLight,
+        int packedOverlay,
+        int color
+	) {
+    bb_main.render(
+            poseStack,
+            vertexConsumer,
+            packedLight,
+            packedOverlay,
+            color
+    );
 	}
 }
