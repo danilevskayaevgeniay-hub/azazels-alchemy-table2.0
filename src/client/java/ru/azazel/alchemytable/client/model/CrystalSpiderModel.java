@@ -13,12 +13,13 @@ import net.minecraft.client.model.geom.builders.CubeListBuilder;
 import net.minecraft.client.model.geom.builders.LayerDefinition;
 import net.minecraft.client.model.geom.builders.MeshDefinition;
 import net.minecraft.client.model.geom.builders.PartDefinition;
+import net.minecraft.client.model.geom.builders.CubeDeformation;
 import ru.azazel.alchemytable.AzazelSAlchemyTable;
 import ru.azazel.alchemytable.entity.CrystalSpider;
 
 public class CrystalSpiderModel extends EntityModel<CrystalSpider> {
 	// This layer location should be baked with EntityRendererProvider.Context in the entity renderer and passed into this model's constructor
-	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation("modid", "crystal_spider"), "main");
+	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new AzazelSAlchemyTable.id("crystal_spider"), "main");
 	private final ModelPart bb_main;
 
 	public CrystalSpiderModel(ModelPart root) {
@@ -62,7 +63,7 @@ public class CrystalSpiderModel extends EntityModel<CrystalSpider> {
 	}
 
 	@Override
-	public void setupAnim(Entity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
+	public void setupAnim(CrystalSpider entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
 
 	}
 
