@@ -1,4 +1,4 @@
-package ru.azazel.alchemytable.client.renderer;
+package ru.azazel.alchemytable.client.render;
 
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
