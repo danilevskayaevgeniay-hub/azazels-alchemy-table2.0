@@ -11,7 +11,8 @@ import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 import ru.azazel.alchemytable.entity.ModEntities;
 import ru.azazel.alchemytable.client.model.CrystalSpiderModel;
-import ru.azazel.alchemytable.client.renderer.CrystalSpiderRenderer;
+import ru.azazel.alchemytable.client.render.CrystalSpiderRenderer;
+import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 
 public class AzazelSAlchemyTableClient implements ClientModInitializer {
 
