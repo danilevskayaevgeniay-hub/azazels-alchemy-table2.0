@@ -10,7 +10,7 @@ import net.minecraft.world.level.Level;
 
 public class CrystalSpider extends Spider {
 
-  privat static final float REFLECTED_DAMAGE = 2.0F;
+  private static final float REFLECTED_DAMAGE = 2.0F;
 
   public CrystalSpider(
             EntityType<? extends Spider> entityType,
