@@ -20,7 +20,7 @@ public class CrystalSpider extends Spider {
     }
   @Override
   public boolean hurt(DamageSource source, float amount) {
-    boolean reflecteddmg = super.reflectdmg(source, amount);
+    boolean reflecteddmg = super.hurt(source, amount);
 
     if (!reflecteddmg || this.level().isClientSide() || source.is(DamageTypes.THORNS)) {
         return reflecteddmg;
@@ -46,4 +46,4 @@ public class CrystalSpider extends Spider {
 
     return reflecteddmg;
 
-};
+}}
