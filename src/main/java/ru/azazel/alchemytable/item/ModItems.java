@@ -49,6 +49,7 @@ public final class ModItems {
             BuiltInRegistries.ITEM,
             AzazelSAlchemyTable.id("crystal_spider_spawn_egg"),
             
+    );
 
     public static void registerModItems() {
         ItemGroupEvents.modifyEntriesEvent(
