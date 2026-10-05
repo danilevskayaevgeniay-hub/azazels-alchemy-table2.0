@@ -48,7 +48,6 @@ public final class ModItems {
     public static final Item CRYSTAL_SPIDER_SPAWN_EGG = Registry.register(
             BuiltInRegistries.ITEM,
             AzazelSAlchemyTable.id("crystal_spider_spawn_egg"),
-            
     );
 
     public static void registerModItems() {
