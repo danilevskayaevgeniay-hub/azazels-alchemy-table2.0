@@ -7,6 +7,7 @@ import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.SpawnEggItem;
 import ru.azazel.alchemytable.AzazelSAlchemyTable;
+import ru.azazel.alchemytable.entity.ModEntities;
 
 public final class ModItems {
 
