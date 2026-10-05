@@ -1,3 +1,11 @@
 {
-  "parent": "azazels-alchemy-table:item/crystal_spider_spawn_egg"
+
+  "parent": "minecraft:item/generated",
+
+  "textures": {
+
+    "layer0": "azazels-alchemy-table:item/crystal_spider_spawn_egg"
+
+  }
+
 }
