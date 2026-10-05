@@ -48,6 +48,12 @@ public final class ModItems {
     public static final Item CRYSTAL_SPIDER_SPAWN_EGG = Registry.register(
             BuiltInRegistries.ITEM,
             AzazelSAlchemyTable.id("crystal_spider_spawn_egg"),
+            new SpawnEggItem(
+                ModEntities.CRYSTAL_SPIDER, // кого призывать
+                0x6E45A8,                  // основной цвет стандартного яйца
+                0xD7B7FF,                  // цвет пятен
+                new Item.Properties()       // настройки предмета
+            )
     );
 
     public static void registerModItems() {
