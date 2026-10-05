@@ -45,6 +45,10 @@ public final class ModItems {
             AzazelSAlchemyTable.id("wind_magic_wand"),
             new WindMagicWandItem(new Item.Properties().stacksTo(1))
     );
+    public static final Item CRYSTAL_SPIDER_SPAWN_EGG = Registry.register(
+            BuiltInRegistries.ITEM,
+            AzazelSAlchemyTable.id("crystal_spider_spawn_egg"),
+            
 
     public static void registerModItems() {
         ItemGroupEvents.modifyEntriesEvent(
