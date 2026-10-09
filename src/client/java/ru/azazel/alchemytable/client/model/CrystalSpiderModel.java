@@ -75,7 +75,7 @@ public class CrystalSpiderModel extends EntityModel<CrystalSpider> {
         float headPitch
 	) {
 
-    	this.leg1.yRot =
+    	this.leg1.xRot =
             Mth.cos(ageInTicks * 0.3F)
                     * 1.0F;
 	  }
