@@ -66,12 +66,20 @@ public class CrystalSpiderModel extends EntityModel<CrystalSpider> {
 	}
 
 	@Override
-	public void setupAnim(CrystalSpider entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
-		this.leg1.yRot =
-            Mth.cos(limbSwing)
-                    * 0.4F
-					* limbSwingAmount;
-	}
+	public void setupAnim(
+        CrystalSpider entity,
+        float limbSwing,
+        float limbSwingAmount,
+        float ageInTicks,
+        float netHeadYaw,
+        float headPitch
+	) {
+
+    	this.leg1.yRot =
+            Mth.cos(ageInTicks * 0.3F)
+                    * 1.0F;
+	  }
+	
 
 	@Override
 	public void renderToBuffer(
