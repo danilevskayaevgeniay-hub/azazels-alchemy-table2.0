@@ -23,10 +23,12 @@ public class CrystalSpiderModel extends EntityModel<CrystalSpider> {
 	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(AzazelSAlchemyTable.id("crystal_spider"), "main");
 	private final ModelPart bb_main;
 	private final ModelPart leg1;
+	private final ModelPart leg2;
 
 	public CrystalSpiderModel(ModelPart root) {
 		this.bb_main = root.getChild("bb_main");
 		this.leg1 = this.bb_main.getChild("leg1"); // НОВОЕ: теперь двигаем отдельную кость у корпуса
+		this.leg2 = this.bb_main.getChild("leg2");и
 	}
 
 	public static LayerDefinition createBodyLayer() {
@@ -82,6 +84,33 @@ public class CrystalSpiderModel extends EntityModel<CrystalSpider> {
 						1.0472F
 				)
 		);
+		PartDefinition leg2 = bb_main.addOrReplaceChild(
+				"leg2",
+				CubeListBuilder.create(),
+				PartPose.offset(4.0F, -6.5F, -4.25F)
+		);
+		leg2.addOrReplaceChild(
+				"cube_r10",
+				CubeListBuilder.create()
+						.texOffs(40, 47)
+						.addBox(
+								-1.0F,
+								-8.0F,
+								-1.0F,
+								2.0F,
+								12.0F,
+								2.0F,
+								new CubeDeformation(0.0F)
+						),
+				PartPose.offsetAndRotation(
+    				2.25F,
+        			1.5F,
+        			-1.75F,
+        			-0.5236F,
+        			0.0F,
+        			-1.0472F
+				)
+		);
 
 		PartDefinition cube_r6 = bb_main.addOrReplaceChild("cube_r6", CubeListBuilder.create().texOffs(32, 47).addBox(-1.0F, -8.0F, -1.0F, 2.0F, 12.0F, 2.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(-10.0F, -3.0F, 3.0F, 0.5236F, 0.0F, 1.0472F));
 
@@ -90,8 +119,6 @@ public class CrystalSpiderModel extends EntityModel<CrystalSpider> {
 		PartDefinition cube_r8 = bb_main.addOrReplaceChild("cube_r8", CubeListBuilder.create().texOffs(24, 36).addBox(-1.0F, -8.0F, -1.0F, 2.0F, 12.0F, 2.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(-11.0F, -2.5F, -4.5F, -0.1745F, 0.0F, 1.0472F));
 
 		PartDefinition cube_r9 = bb_main.addOrReplaceChild("cube_r9", CubeListBuilder.create().texOffs(16, 36).addBox(0.25F, -3.0F, 0.0F, 2.0F, 12.0F, 2.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(6.25F, -3.75F, -0.25F, 0.5236F, 0.0F, -1.0472F));
-
-		PartDefinition cube_r10 = bb_main.addOrReplaceChild("cube_r10", CubeListBuilder.create().texOffs(8, 36).addBox(-1.0F, -3.0F, -1.0F, 2.0F, 12.0F, 2.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(6.25F, -5.0F, -6.0F, -0.5236F, 0.0F, -1.0472F));
 
 		PartDefinition cube_r11 = bb_main.addOrReplaceChild("cube_r11", CubeListBuilder.create().texOffs(0, 36).addBox(-1.0F, -3.0F, -1.0F, 2.0F, 12.0F, 2.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(6.75F, -4.75F, -4.0F, -0.1745F, 0.0F, -1.0472F));
 
@@ -128,6 +155,7 @@ public class CrystalSpiderModel extends EntityModel<CrystalSpider> {
 		// Вращаем leg1 - кость возле корпуса.
 		// Сам cube_r5 лежит внутри неё и сохраняет исходные углы Blockbench.
 		this.leg1.xRot = legMovement;
+		this.leg2.xRot = -legMovement;
 	}
 
 	@Override
