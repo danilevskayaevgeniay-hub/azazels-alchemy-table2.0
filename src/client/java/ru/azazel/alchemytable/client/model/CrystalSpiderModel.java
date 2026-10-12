@@ -28,7 +28,7 @@ public class CrystalSpiderModel extends EntityModel<CrystalSpider> {
 	public CrystalSpiderModel(ModelPart root) {
 		this.bb_main = root.getChild("bb_main");
 		this.leg1 = this.bb_main.getChild("leg1"); // НОВОЕ: теперь двигаем отдельную кость у корпуса
-		this.leg2 = this.bb_main.getChild("leg2");и
+		this.leg2 = this.bb_main.getChild("leg2");
 	}
 
 	public static LayerDefinition createBodyLayer() {
