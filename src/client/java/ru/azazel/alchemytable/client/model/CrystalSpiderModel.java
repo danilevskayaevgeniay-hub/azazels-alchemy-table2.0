@@ -26,7 +26,7 @@ public class CrystalSpiderModel extends EntityModel<CrystalSpider> {
 
 	public CrystalSpiderModel(ModelPart root) {
 		this.bb_main = root.getChild("bb_main");
-		this.leg1 = this.bb_main.getChild("cube_r5");
+		this.leg1 = this.bb_main.getChild("leg1"); // НОВОЕ: теперь двигаем отдельную кость у корпуса
 	}
 
 	public static LayerDefinition createBodyLayer() {
@@ -46,7 +46,42 @@ public class CrystalSpiderModel extends EntityModel<CrystalSpider> {
 
 		PartDefinition cube_r4 = bb_main.addOrReplaceChild("cube_r4", CubeListBuilder.create().texOffs(-5, -5).addBox(-1.0F, -3.0F, -1.0F, 0.0F, 3.0F, 7.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(-2.0F, -11.0F, 3.0F, 0.0F, 0.0F, -0.1309F));
 
-		PartDefinition cube_r5 = bb_main.addOrReplaceChild("cube_r5", CubeListBuilder.create().texOffs(40, 47).addBox(-1.0F, -8.0F, -1.0F, 2.0F, 12.0F, 2.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(-10.0F, -3.0F, -8.25F, -0.5236F, 0.0F, 1.0472F));
+		// НОВОЕ: создаём отдельную "кость" первой лапы.
+		// Её pivot находится возле корпуса, поэтому лапа вращается от места крепления,
+		// а не выворачивается вокруг собственной середины.
+		PartDefinition leg1 = bb_main.addOrReplaceChild(
+				"leg1",
+				CubeListBuilder.create(),
+				PartPose.offset(-4.0F, -6.5F, -4.25F)
+		);
+
+		// НОВОЕ: старую геометрию cube_r5 кладём ВНУТРЬ кости leg1.
+		// Размер, UV и исходные углы лапы сохраняются.
+		// Координаты теперь считаются относительно leg1:
+		// (-4, -6.5, -4.25) + (-6, 3.5, -4) = (-10, -3, -8.25),
+		// то есть визуально лапа остаётся на прежнем месте.
+		leg1.addOrReplaceChild(
+				"cube_r5",
+				CubeListBuilder.create()
+						.texOffs(40, 47)
+						.addBox(
+								-1.0F,
+								-8.0F,
+								-1.0F,
+								2.0F,
+								12.0F,
+								2.0F,
+								new CubeDeformation(0.0F)
+						),
+				PartPose.offsetAndRotation(
+						-6.0F,
+						3.5F,
+						-4.0F,
+						-0.5236F,
+						0.0F,
+						1.0472F
+				)
+		);
 
 		PartDefinition cube_r6 = bb_main.addOrReplaceChild("cube_r6", CubeListBuilder.create().texOffs(32, 47).addBox(-1.0F, -8.0F, -1.0F, 2.0F, 12.0F, 2.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(-10.0F, -3.0F, 3.0F, 0.5236F, 0.0F, 1.0472F));
 
@@ -67,19 +102,33 @@ public class CrystalSpiderModel extends EntityModel<CrystalSpider> {
 
 	@Override
 	public void setupAnim(
-        CrystalSpider entity,
-        float limbSwing,
-        float limbSwingAmount,
-        float ageInTicks,
-        float netHeadYaw,
-        float headPitch
+			CrystalSpider entity,
+			float limbSwing,
+			float limbSwingAmount,
+			float ageInTicks,
+			float netHeadYaw,
+			float headPitch
 	) {
 
-    	this.leg1.xRot =
-            Mth.cos(ageInTicks * 0.3F)
-                    * 1.0F;
-	  }
-	
+		// НОВОЕ:
+		// Раньше использовали ageInTicks, поэтому лапа двигалась ВСЕГДА.
+		// Теперь используем limbSwing и limbSwingAmount:
+		// паук стоит -> limbSwingAmount около 0 -> движение исчезает;
+		// паук идёт -> значение растёт -> лапа начинает двигаться.
+		float legMovement =
+				Mth.cos(
+						limbSwing
+								* 0.6662F
+								* 2.0F
+				)
+						* 0.4F
+						* limbSwingAmount;
+
+		// НОВОЕ:
+		// Вращаем leg1 - кость возле корпуса.
+		// Сам cube_r5 лежит внутри неё и сохраняет исходные углы Blockbench.
+		this.leg1.xRot = legMovement;
+	}
 
 	@Override
 	public void renderToBuffer(
