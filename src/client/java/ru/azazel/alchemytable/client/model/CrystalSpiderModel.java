@@ -148,7 +148,7 @@ public class CrystalSpiderModel extends EntityModel<CrystalSpider> {
 								* 0.6662F
 								* 2.0F
 				)
-						* 0.4F
+						* 0.8F
 						* limbSwingAmount;
 
 		// НОВОЕ:
