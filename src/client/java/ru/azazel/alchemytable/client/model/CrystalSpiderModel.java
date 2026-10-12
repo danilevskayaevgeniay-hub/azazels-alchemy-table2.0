@@ -92,10 +92,10 @@ public class CrystalSpiderModel extends EntityModel<CrystalSpider> {
 		leg2.addOrReplaceChild(
 				"cube_r10",
 				CubeListBuilder.create()
-						.texOffs(40, 47)
+						.texOffs(8, 36)
 						.addBox(
 								-1.0F,
-								-8.0F,
+								-3.0F,
 								-1.0F,
 								2.0F,
 								12.0F,
