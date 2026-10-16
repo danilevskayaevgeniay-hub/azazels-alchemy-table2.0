@@ -1,177 +1,93 @@
-// Made with Blockbench 5.1.6
+// Made with Blockbench 5.2.2
 // Exported for Minecraft version 1.17 or later with Mojang mappings
 // Paste this class into your mod and generate all required imports
-package ru.azazel.alchemytable.client.model;
+import net.minecraft.client.model.SpiderModel;
+import ru.azazel.AzazelSAlchemyTable;
 
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.blaze3d.vertex.VertexConsumer;
-import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.model.geom.ModelLayerLocation;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.client.model.geom.builders.CubeDeformation;
-import ru.azazel.alchemytable.AzazelSAlchemyTable;
-import ru.azazel.alchemytable.entity.CrystalSpider;
-import net.minecraft.util.Mth;
 
-public class CrystalSpiderModel extends EntityModel<CrystalSpider> {
+public class CrystalSpiderModel extends SpiderModel<CrystalSpider> {
 	// This layer location should be baked with EntityRendererProvider.Context in the entity renderer and passed into this model's constructor
 	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(AzazelSAlchemyTable.id("crystal_spider"), "main");
-	private final ModelPart bb_main;
-	private final ModelPart leg1;
-	private final ModelPart leg2;
+	private final ModelPart head;
+	private final ModelPart body0;
+	private final ModelPart body1;
+	private final ModelPart right_hind_leg;
+	private final ModelPart left_hind_leg;
+	private final ModelPart right_middle_hind_leg;
+	private final ModelPart left_middle_hind_leg;
+	private final ModelPart right_middle_front_leg;
+	private final ModelPart left_middle_front_leg;
+	private final ModelPart right_front_leg;
+	private final ModelPart left_front_leg;
+	private final ModelPart spikes;
 
-	public CrystalSpiderModel(ModelPart root) {
-		this.bb_main = root.getChild("bb_main");
-		this.leg1 = this.bb_main.getChild("leg1"); // НОВОЕ: теперь двигаем отдельную кость у корпуса
-		this.leg2 = this.bb_main.getChild("leg2");
+	public crystal_spider_model(ModelPart root) {
+		this.head = root.getChild("head");
+		this.body0 = root.getChild("body0");
+		this.body1 = root.getChild("body1");
+		this.right_hind_leg = root.getChild("right_hind_leg");
+		this.left_hind_leg = root.getChild("left_hind_leg");
+		this.right_middle_hind_leg = root.getChild("right_middle_hind_leg");
+		this.left_middle_hind_leg = root.getChild("left_middle_hind_leg");
+		this.right_middle_front_leg = root.getChild("right_middle_front_leg");
+		this.left_middle_front_leg = root.getChild("left_middle_front_leg");
+		this.right_front_leg = root.getChild("right_front_leg");
+		this.left_front_leg = root.getChild("left_front_leg");
+		this.spikes = root.getChild("spikes");
 	}
 
 	public static LayerDefinition createBodyLayer() {
 		MeshDefinition meshdefinition = new MeshDefinition();
 		PartDefinition partdefinition = meshdefinition.getRoot();
 
-		PartDefinition bb_main = partdefinition.addOrReplaceChild("bb_main", CubeListBuilder.create().texOffs(32, 20).addBox(-5.0F, -10.0F, -7.0F, 10.0F, 6.0F, 7.0F, new CubeDeformation(0.0F))
-		.texOffs(0, 20).addBox(-4.0F, -11.0F, -15.0F, 8.0F, 8.0F, 8.0F, new CubeDeformation(0.0F))
-		.texOffs(0, 0).addBox(-6.0F, -11.0F, 0.0F, 12.0F, 8.0F, 12.0F, new CubeDeformation(0.0F))
-		.texOffs(36, -5).addBox(0.0F, -14.0F, -13.0F, 0.0F, 3.0F, 6.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, 24.0F, 0.0F));
+		PartDefinition head = partdefinition.addOrReplaceChild("head", CubeListBuilder.create().texOffs(32, 4).addBox(-4.0F, -4.0F, -8.0F, 8.0F, 8.0F, 8.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, 15.0F, -3.0F));
 
-		PartDefinition cube_r1 = bb_main.addOrReplaceChild("cube_r1", CubeListBuilder.create().texOffs(35, 7).addBox(-1.0F, 0.0F, -4.0F, 2.0F, 0.0F, 5.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(7.0F, -7.0F, 8.0F, 0.0F, 0.0F, -0.2618F));
+		PartDefinition body0 = partdefinition.addOrReplaceChild("body0", CubeListBuilder.create().texOffs(0, 0).addBox(-3.0F, -3.0F, -3.0F, 6.0F, 6.0F, 6.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, 15.0F, 0.0F));
 
-		PartDefinition cube_r2 = bb_main.addOrReplaceChild("cube_r2", CubeListBuilder.create().texOffs(31, 7).addBox(-1.0F, 0.0F, -4.0F, 2.0F, 0.0F, 5.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(-7.0F, -7.0F, 8.0F, 0.0F, 0.0F, 0.2618F));
+		PartDefinition body1 = partdefinition.addOrReplaceChild("body1", CubeListBuilder.create().texOffs(0, 12).addBox(-5.0F, -4.0F, -6.0F, 10.0F, 8.0F, 12.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, 15.0F, 9.0F));
 
-		PartDefinition cube_r3 = bb_main.addOrReplaceChild("cube_r3", CubeListBuilder.create().texOffs(-5, -5).addBox(-1.0F, -3.0F, -1.0F, 0.0F, 3.0F, 7.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(4.0F, -11.0F, 3.0F, 0.0F, 0.0F, 0.1309F));
+		PartDefinition right_hind_leg = partdefinition.addOrReplaceChild("right_hind_leg", CubeListBuilder.create().texOffs(18, 0).addBox(-15.0F, -1.0F, -1.0F, 16.0F, 2.0F, 2.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(-4.0F, 15.0F, 2.0F, 0.0F, 0.7854F, -0.7854F));
 
-		PartDefinition cube_r4 = bb_main.addOrReplaceChild("cube_r4", CubeListBuilder.create().texOffs(-5, -5).addBox(-1.0F, -3.0F, -1.0F, 0.0F, 3.0F, 7.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(-2.0F, -11.0F, 3.0F, 0.0F, 0.0F, -0.1309F));
+		PartDefinition left_hind_leg = partdefinition.addOrReplaceChild("left_hind_leg", CubeListBuilder.create().texOffs(18, 0).addBox(-1.0F, -1.0F, -1.0F, 16.0F, 2.0F, 2.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(4.0F, 15.0F, 2.0F, 0.0F, -0.7854F, 0.7854F));
 
-		// НОВОЕ: создаём отдельную "кость" первой лапы.
-		// Её pivot находится возле корпуса, поэтому лапа вращается от места крепления,
-		// а не выворачивается вокруг собственной середины.
-		PartDefinition leg1 = bb_main.addOrReplaceChild(
-				"leg1",
-				CubeListBuilder.create(),
-				PartPose.offset(-4.0F, -6.5F, -4.25F)
-		);
+		PartDefinition right_middle_hind_leg = partdefinition.addOrReplaceChild("right_middle_hind_leg", CubeListBuilder.create().texOffs(18, 0).addBox(-15.0F, -1.0F, -1.0F, 16.0F, 2.0F, 2.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(-4.0F, 15.0F, 1.0F, 0.0F, 0.2618F, -0.6109F));
 
-		// НОВОЕ: старую геометрию cube_r5 кладём ВНУТРЬ кости leg1.
-		// Размер, UV и исходные углы лапы сохраняются.
-		// Координаты теперь считаются относительно leg1:
-		// (-4, -6.5, -4.25) + (-6, 3.5, -4) = (-10, -3, -8.25),
-		// то есть визуально лапа остаётся на прежнем месте.
-		leg1.addOrReplaceChild(
-				"cube_r5",
-				CubeListBuilder.create()
-						.texOffs(40, 47)
-						.addBox(
-								-1.0F,
-								-8.0F,
-								-1.0F,
-								2.0F,
-								12.0F,
-								2.0F,
-								new CubeDeformation(0.0F)
-						),
-				PartPose.offsetAndRotation(
-						-6.0F,
-						3.5F,
-						-4.0F,
-						-0.5236F,
-						0.0F,
-						1.0472F
-				)
-		);
-		PartDefinition leg2 = bb_main.addOrReplaceChild(
-				"leg2",
-				CubeListBuilder.create(),
-				PartPose.offset(4.0F, -6.5F, -4.25F)
-		);
-		leg2.addOrReplaceChild(
-				"cube_r10",
-				CubeListBuilder.create()
-						.texOffs(8, 36)
-						.addBox(
-								-1.0F,
-								-3.0F,
-								-1.0F,
-								2.0F,
-								12.0F,
-								2.0F,
-								new CubeDeformation(0.0F)
-						),
-				PartPose.offsetAndRotation(
-    				2.25F,
-        			1.5F,
-        			-1.75F,
-        			-0.5236F,
-        			0.0F,
-        			-1.0472F
-				)
-		);
+		PartDefinition left_middle_hind_leg = partdefinition.addOrReplaceChild("left_middle_hind_leg", CubeListBuilder.create().texOffs(18, 0).addBox(-1.0F, -1.0F, -1.0F, 16.0F, 2.0F, 2.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(4.0F, 15.0F, 1.0F, 0.0F, -0.2618F, 0.6109F));
 
-		PartDefinition cube_r6 = bb_main.addOrReplaceChild("cube_r6", CubeListBuilder.create().texOffs(32, 47).addBox(-1.0F, -8.0F, -1.0F, 2.0F, 12.0F, 2.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(-10.0F, -3.0F, 3.0F, 0.5236F, 0.0F, 1.0472F));
+		PartDefinition right_middle_front_leg = partdefinition.addOrReplaceChild("right_middle_front_leg", CubeListBuilder.create().texOffs(18, 0).addBox(-15.0F, -1.0F, -1.0F, 16.0F, 2.0F, 2.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(-4.0F, 15.0F, 0.0F, 0.0F, -0.2618F, -0.6109F));
 
-		PartDefinition cube_r7 = bb_main.addOrReplaceChild("cube_r7", CubeListBuilder.create().texOffs(40, 33).addBox(-1.0F, -8.0F, -1.0F, 2.0F, 12.0F, 2.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(-11.0F, -2.5F, -0.75F, 0.1745F, 0.0F, 1.0472F));
+		PartDefinition left_middle_front_leg = partdefinition.addOrReplaceChild("left_middle_front_leg", CubeListBuilder.create().texOffs(18, 0).addBox(-1.0F, -1.0F, -1.0F, 16.0F, 2.0F, 2.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(4.0F, 15.0F, 0.0F, 0.0F, 0.2618F, 0.6109F));
 
-		PartDefinition cube_r8 = bb_main.addOrReplaceChild("cube_r8", CubeListBuilder.create().texOffs(24, 36).addBox(-1.0F, -8.0F, -1.0F, 2.0F, 12.0F, 2.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(-11.0F, -2.5F, -4.5F, -0.1745F, 0.0F, 1.0472F));
+		PartDefinition right_front_leg = partdefinition.addOrReplaceChild("right_front_leg", CubeListBuilder.create().texOffs(18, 0).addBox(-15.0F, -1.0F, -1.0F, 16.0F, 2.0F, 2.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(-4.0F, 15.0F, -1.0F, 0.0F, -0.7854F, -0.7854F));
 
-		PartDefinition cube_r9 = bb_main.addOrReplaceChild("cube_r9", CubeListBuilder.create().texOffs(16, 36).addBox(0.25F, -3.0F, 0.0F, 2.0F, 12.0F, 2.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(6.25F, -3.75F, -0.25F, 0.5236F, 0.0F, -1.0472F));
+		PartDefinition left_front_leg = partdefinition.addOrReplaceChild("left_front_leg", CubeListBuilder.create().texOffs(18, 0).addBox(-1.0F, -1.0F, -1.0F, 16.0F, 2.0F, 2.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(4.0F, 15.0F, -1.0F, 0.0F, 0.7854F, 0.7854F));
 
-		PartDefinition cube_r11 = bb_main.addOrReplaceChild("cube_r11", CubeListBuilder.create().texOffs(0, 36).addBox(-1.0F, -3.0F, -1.0F, 2.0F, 12.0F, 2.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(6.75F, -4.75F, -4.0F, -0.1745F, 0.0F, -1.0472F));
+		PartDefinition spikes = partdefinition.addOrReplaceChild("spikes", CubeListBuilder.create().texOffs(52, 24).addBox(0.0F, -15.0F, -10.0F, 0.0F, 3.0F, 6.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, 24.0F, 0.0F));
 
-		PartDefinition cube_r12 = bb_main.addOrReplaceChild("cube_r12", CubeListBuilder.create().texOffs(32, 33).addBox(-0.75F, -3.0F, 0.0F, 2.0F, 12.0F, 2.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(6.75F, -4.5F, -2.5F, 0.1745F, 0.0F, -1.0472F));
+		PartDefinition cube_r1 = spikes.addOrReplaceChild("cube_r1", CubeListBuilder.create().texOffs(52, 22).addBox(-1.0F, 0.0F, -5.0F, 2.0F, 0.0F, 6.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(-5.75F, -9.0F, 12.0F, 0.0F, 0.0F, -3.0107F));
 
-		return LayerDefinition.create(meshdefinition, 128, 128);
+		PartDefinition cube_r2 = spikes.addOrReplaceChild("cube_r2", CubeListBuilder.create().texOffs(52, 22).addBox(-1.0F, 0.0F, -5.0F, 2.0F, 0.0F, 6.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(5.75F, -9.0F, 12.0F, 0.0F, 0.0F, -0.1309F));
+
+		PartDefinition cube_r3 = spikes.addOrReplaceChild("cube_r3", CubeListBuilder.create().texOffs(52, 24).addBox(-1.0F, -3.0F, -2.0F, 0.0F, 3.0F, 6.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(-1.0F, -12.0F, 9.0F, 0.0F, -0.1309F, 0.0F));
+
+		PartDefinition cube_r4 = spikes.addOrReplaceChild("cube_r4", CubeListBuilder.create().texOffs(52, 24).addBox(-1.0F, -3.0F, -2.0F, 0.0F, 3.0F, 6.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(3.0F, -12.0F, 8.75F, 0.0F, 0.1309F, 0.0F));
+
+		return LayerDefinition.create(meshdefinition, 64, 32);
 	}
 
 	@Override
-	public void setupAnim(
-			CrystalSpider entity,
-			float limbSwing,
-			float limbSwingAmount,
-			float ageInTicks,
-			float netHeadYaw,
-			float headPitch
-	) {
-
-		// НОВОЕ:
-		// Раньше использовали ageInTicks, поэтому лапа двигалась ВСЕГДА.
-		// Теперь используем limbSwing и limbSwingAmount:
-		// паук стоит -> limbSwingAmount около 0 -> движение исчезает;
-		// паук идёт -> значение растёт -> лапа начинает двигаться.
-		float legMovement =
-				Mth.cos(
-						limbSwing
-								* 0.6662F
-								* 2.0F
-				)
-						* 0.8F
-						* limbSwingAmount;
-
-		// НОВОЕ:
-		// Вращаем leg1 - кость возле корпуса.
-		// Сам cube_r5 лежит внутри неё и сохраняет исходные углы Blockbench.
-		this.leg1.xRot = legMovement;
-		this.leg2.xRot = -legMovement;
-	}
-
-	@Override
-	public void renderToBuffer(
-        PoseStack poseStack,
-        VertexConsumer vertexConsumer,
-        int packedLight,
-        int packedOverlay,
-        int color
-	) {
-    bb_main.render(
-            poseStack,
-            vertexConsumer,
-            packedLight,
-            packedOverlay,
-            color
-    );
+	public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha) {
+		head.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
+		body0.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
+		body1.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
+		right_hind_leg.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
+		left_hind_leg.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
+		right_middle_hind_leg.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
+		left_middle_hind_leg.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
+		right_middle_front_leg.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
+		left_middle_front_leg.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
+		right_front_leg.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
+		left_front_leg.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
+		spikes.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
 	}
 }
