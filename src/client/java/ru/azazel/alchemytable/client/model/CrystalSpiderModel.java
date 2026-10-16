@@ -1,15 +1,23 @@
 // Made with Blockbench 5.2.2
 // Exported for Minecraft version 1.17 or later with Mojang mappings
 // Paste this class into your mod and generate all required imports
+package ru.azazel.alchemytable.client.model;
+
 import net.minecraft.client.model.SpiderModel;
+import net.minecraft.client.model.geom.ModelLayerLocation;
+import net.minecraft.client.model.geom.ModelPart;
+import net.minecraft.client.model.geom.PartPose;
+import net.minecraft.client.model.geom.builders.CubeDeformation;
+import net.minecraft.client.model.geom.builders.CubeListBuilder;
+import net.minecraft.client.model.geom.builders.LayerDefinition;
+import net.minecraft.client.model.geom.builders.MeshDefinition;
+import net.minecraft.client.model.geom.builders.PartDefinition;
 import ru.azazel.alchemytable.AzazelSAlchemyTable;
 import ru.azazel.alchemytable.entity.CrystalSpider;
-
 
 public class CrystalSpiderModel extends SpiderModel<CrystalSpider> {
 	// This layer location should be baked with EntityRendererProvider.Context in the entity renderer and passed into this model's constructor
 	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(AzazelSAlchemyTable.id("crystal_spider"), "main");
-	private final ModelPart spikes;
 
 	public CrystalSpiderModel(ModelPart root) {
 		super(root);
