@@ -2,38 +2,17 @@
 // Exported for Minecraft version 1.17 or later with Mojang mappings
 // Paste this class into your mod and generate all required imports
 import net.minecraft.client.model.SpiderModel;
-import ru.azazel.AzazelSAlchemyTable;
+import ru.azazel.alchemytable.AzazelSAlchemyTable;
+import ru.azazel.alchemytable.entity.CrystalSpider;
 
 
 public class CrystalSpiderModel extends SpiderModel<CrystalSpider> {
 	// This layer location should be baked with EntityRendererProvider.Context in the entity renderer and passed into this model's constructor
 	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(AzazelSAlchemyTable.id("crystal_spider"), "main");
-	private final ModelPart head;
-	private final ModelPart body0;
-	private final ModelPart body1;
-	private final ModelPart right_hind_leg;
-	private final ModelPart left_hind_leg;
-	private final ModelPart right_middle_hind_leg;
-	private final ModelPart left_middle_hind_leg;
-	private final ModelPart right_middle_front_leg;
-	private final ModelPart left_middle_front_leg;
-	private final ModelPart right_front_leg;
-	private final ModelPart left_front_leg;
 	private final ModelPart spikes;
 
-	public crystal_spider_model(ModelPart root) {
-		this.head = root.getChild("head");
-		this.body0 = root.getChild("body0");
-		this.body1 = root.getChild("body1");
-		this.right_hind_leg = root.getChild("right_hind_leg");
-		this.left_hind_leg = root.getChild("left_hind_leg");
-		this.right_middle_hind_leg = root.getChild("right_middle_hind_leg");
-		this.left_middle_hind_leg = root.getChild("left_middle_hind_leg");
-		this.right_middle_front_leg = root.getChild("right_middle_front_leg");
-		this.left_middle_front_leg = root.getChild("left_middle_front_leg");
-		this.right_front_leg = root.getChild("right_front_leg");
-		this.left_front_leg = root.getChild("left_front_leg");
-		this.spikes = root.getChild("spikes");
+	public CrystalSpiderModel(ModelPart root) {
+		super(root);
 	}
 
 	public static LayerDefinition createBodyLayer() {
@@ -73,21 +52,5 @@ public class CrystalSpiderModel extends SpiderModel<CrystalSpider> {
 		PartDefinition cube_r4 = spikes.addOrReplaceChild("cube_r4", CubeListBuilder.create().texOffs(52, 24).addBox(-1.0F, -3.0F, -2.0F, 0.0F, 3.0F, 6.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(3.0F, -12.0F, 8.75F, 0.0F, 0.1309F, 0.0F));
 
 		return LayerDefinition.create(meshdefinition, 64, 32);
-	}
-
-	@Override
-	public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha) {
-		head.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
-		body0.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
-		body1.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
-		right_hind_leg.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
-		left_hind_leg.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
-		right_middle_hind_leg.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
-		left_middle_hind_leg.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
-		right_middle_front_leg.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
-		left_middle_front_leg.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
-		right_front_leg.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
-		left_front_leg.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
-		spikes.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
 	}
 }
