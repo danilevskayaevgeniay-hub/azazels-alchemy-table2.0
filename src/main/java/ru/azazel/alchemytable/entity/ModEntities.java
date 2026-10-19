@@ -5,6 +5,9 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import ru.azazel.alchemytable.AzazelSAlchemyTable;
+import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityType;
+import net.minecraft.world.entity.SpawnPlacementTypes;
+import net.minecraft.world.level.levelgen.Heightmap;
 
 public final class ModEntities {
 
@@ -47,10 +50,24 @@ public final class ModEntities {
     public static final EntityType<CrystalSpider> CRYSTAL_SPIDER = Registry.register(
             BuiltInRegistries.ENTITY_TYPE,
             AzazelSAlchemyTable.id("crystal_spider"),
-            EntityType.Builder.<CrystalSpider>of(CrystalSpider::new, MobCategory.MONSTER)
-                    .sized(1.4F, 0.9F)
-                    .clientTrackingRange(4)
-                    .build()
+            FabricEntityType.Builder.createMob(
+                CrystalSpider::new,
+                MobCategory.MONSTER,
+                builder ->
+                        builder.spawnRestriction(
+                                SpawnPlacementTypes.ON_GROUND,
+                                Heightmap.Types
+                                        .MOTION_BLOCKING_NO_LEAVES,
+                                CrystalSpider
+                                        ::checkCrystalSpiderSpawnRules
+                                )
+                .sized(
+                                1.4F,
+                                0.9F
+                        )
+                        .clientTrackingRange(4)
+                        .build()
+                )
     );
 
 
