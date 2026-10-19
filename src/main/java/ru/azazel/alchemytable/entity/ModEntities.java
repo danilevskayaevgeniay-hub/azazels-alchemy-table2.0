@@ -61,13 +61,13 @@ public final class ModEntities {
                                 CrystalSpider
                                         ::checkCrystalSpiderSpawnRules
                                 )
+                )
                 .sized(
                                 1.4F,
                                 0.9F
                         )
                         .clientTrackingRange(4)
                         .build()
-                )
     );
 
 
