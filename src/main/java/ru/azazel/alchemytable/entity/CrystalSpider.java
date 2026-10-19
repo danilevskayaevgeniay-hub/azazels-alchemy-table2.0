@@ -8,6 +8,12 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
 
+import net.minecraft.core.BlockPos;
+import net.minecraft.util.RandomSource;
+import net.minecraft.world.entity.MobSpawnType;
+import net.minecraft.world.entity.monster.Monster;
+import net.minecraft.world.level.ServerLevelAccessor;
+
 public class CrystalSpider extends Spider {
 
   private static final float REFLECTED_DAMAGE = 2.0F;
@@ -18,6 +24,30 @@ public class CrystalSpider extends Spider {
     ) {
         super(entityType, level);
     }
+  public static boolean checkCrystalSpiderSpawnRules(
+        EntityType<CrystalSpider> entityType,
+        ServerLevelAccessor level,
+        MobSpawnType spawnType,
+        BlockPos pos,
+        RandomSource random
+  ) {
+
+    boolean isCaveLevel =
+            pos.getY() <= 35;
+
+    boolean vanillaMonsterRules =
+            Monster.checkMonsterSpawnRules(
+                    entityType,
+                    level,
+                    spawnType,
+                    pos,
+                    random
+            );
+
+    return isCaveLevel
+            && vanillaMonsterRules;
+  }
+
   @Override
   public boolean hurt(DamageSource source, float amount) {
     boolean reflecteddmg = super.hurt(source, amount);
