@@ -11,6 +11,7 @@ import ru.azazel.alchemytable.block.entity.ModBlockEntities;
 import ru.azazel.alchemytable.menu.ModMenuTypes;
 import ru.azazel.alchemytable.item.ModItems;
 import ru.azazel.alchemytable.entity.ModEntities;
+import ru.azazel.alchemytable.entity.ModEntitySpawns;
 
 public class AzazelSAlchemyTable implements ModInitializer {
 
@@ -29,6 +30,7 @@ public class AzazelSAlchemyTable implements ModInitializer {
             ModEntities.CRYSTAL_SPIDER,
             Spider.createAttributes()
         );
+        ModEntitySpawns.register();
 
         LOGGER.info("Azazel's Alchemy Table initialized");
     }
