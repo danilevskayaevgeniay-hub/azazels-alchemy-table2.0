@@ -17,7 +17,7 @@ import net.minecraft.server.level.ServerLevel;
 
 public class LightProjectile extends ThrowableItemProjectile {
 
-    private static final int LIGHT_TIME 12000;
+    private static final int LIGHT_TIME = 12000;
 
     public LightProjectile(EntityType<? extends LightProjectile> entityType, Level level) {
         super(entityType, level);
