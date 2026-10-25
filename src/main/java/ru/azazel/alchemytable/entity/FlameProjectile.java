@@ -15,7 +15,7 @@ public class FlameProjectile extends ThrowableItemProjectile {
     }
 
     public FlameProjectile(Level level, LivingEntity owner) {
-        super(ModEntities.LIGHT_PROJECTILE, owner, level);
+        super(ModEntities.FLAME_PROJECTILE, owner, level);
     }
 
     @Override
