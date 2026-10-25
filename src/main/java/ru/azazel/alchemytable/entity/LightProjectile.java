@@ -15,6 +15,8 @@ import net.minecraft.world.phys.BlockHitResult;
 
 public class LightProjectile extends ThrowableItemProjectile {
 
+    private static final int LIGHT_TIME 12000;
+
     public LightProjectile(EntityType<? extends LightProjectile> entityType, Level level) {
         super(entityType, level);
     }
