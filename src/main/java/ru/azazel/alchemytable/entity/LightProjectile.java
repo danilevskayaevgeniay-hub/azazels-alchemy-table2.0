@@ -13,6 +13,8 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.phys.BlockHitResult;
 
+import net.minecraft.server.level.ServerLevel;
+
 public class LightProjectile extends ThrowableItemProjectile {
 
     private static final int LIGHT_TIME 12000;
@@ -60,6 +62,14 @@ public class LightProjectile extends ThrowableItemProjectile {
                                 ),
                         3
                 );
+                if (level() instanceof ServerLevel serverLevel) {
+
+                    TemporaryLightManager.addLight(
+                           serverLevel,
+                           lightPos,
+                           LIGHT_TIME
+                    );
+                }
             }
         }
 
