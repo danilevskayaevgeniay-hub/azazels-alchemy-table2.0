@@ -76,4 +76,4 @@ public class LightProjectile extends ThrowableItemProjectile {
         discard();
     }
 }
-
+}
