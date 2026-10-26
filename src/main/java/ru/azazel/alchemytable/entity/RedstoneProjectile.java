@@ -47,13 +47,19 @@ public class RedstoneProjectile extends ThrowableItemProjectile {
                 if (result instanceof BlockHitResult blockHit) {
 
                     BlockPos hitBlockPos =
+                        level().setBlock(
+                            redstonePos,
+                            Blocks.REDSTONE_BLOCK.defaultBlockState(),
+                            3
+                            discard();
+                        );
                     blockHit.getBlockPos();
 
                 if (level() instanceof ServerLevel serverLevel) {
 
                     TemporaryRedstoneManager.addRedstone(
                            serverLevel,
-                           RedstonePos,
+                           hitBlockPos,
                            REDSTONE_TIMER
                     );
                 }
