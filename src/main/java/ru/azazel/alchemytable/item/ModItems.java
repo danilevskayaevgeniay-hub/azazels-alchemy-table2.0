@@ -25,7 +25,7 @@ public final class ModItems {
     public static final Item FLAME_MAGIC_WAND = Registry.register(
             BuiltInRegistries.ITEM,
             AzazelSAlchemyTable.id("flame_magic_wand"),
-            new ChargedMagicWandItem(new Item.Properties().stacksTo(1))
+            new FlameMagicWandItem(new Item.Properties().stacksTo(1))
     );
     public static final Item SEA_MAGIC_WAND = Registry.register(
             BuiltInRegistries.ITEM,
@@ -35,7 +35,7 @@ public final class ModItems {
     public static final Item REDSTONE_MAGIC_WAND = Registry.register(
             BuiltInRegistries.ITEM,
             AzazelSAlchemyTable.id("redstone_magic_wand"),
-            new ChargedMagicWandItem(new Item.Properties().stacksTo(1))
+            new RedstoneMagicWandItem(new Item.Properties().stacksTo(1))
     );
     public static final Item SEEKING_MAGIC_WAND = Registry.register(
             BuiltInRegistries.ITEM,
