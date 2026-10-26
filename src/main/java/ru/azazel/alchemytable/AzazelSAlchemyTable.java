@@ -13,6 +13,7 @@ import ru.azazel.alchemytable.item.ModItems;
 import ru.azazel.alchemytable.entity.ModEntities;
 import ru.azazel.alchemytable.entity.ModEntitySpawns;
 import ru.azazel.alchemytable.entity.TemporaryLightManager;
+import ru.azazel.alchemytable.entity.TemporaryRedstoneManager;
 
 public class AzazelSAlchemyTable implements ModInitializer {
 
@@ -33,6 +34,7 @@ public class AzazelSAlchemyTable implements ModInitializer {
         );
         ModEntitySpawns.register();
         TemporaryLightManager.register();
+        TemporaryRedstoneManager.register();
 
         LOGGER.info("Azazel's Alchemy Table initialized");
     }
