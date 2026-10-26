@@ -14,9 +14,13 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.phys.BlockHitResult;
 
+import net.minecraft.server.level.ServerLevel;
+
 import java.util.List;
 
 public class RedstoneProjectile extends ThrowableItemProjectile {
+
+    public static final int REDSTONE_TIMER = 10;
 
     public RedstoneProjectile(
             EntityType<? extends RedstoneProjectile> entityType,
