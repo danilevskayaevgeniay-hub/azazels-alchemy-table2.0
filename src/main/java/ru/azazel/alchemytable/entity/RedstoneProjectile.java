@@ -1,25 +1,19 @@
 package ru.azazel.alchemytable.entity;
 
+import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.projectile.ThrowableItemProjectile;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.phys.HitResult;
-import net.minecraft.world.phys.Vec3;
-import net.minecraft.world.entity.LivingEntity;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.phys.BlockHitResult;
-
-import net.minecraft.server.level.ServerLevel;
-
-import java.util.List;
+import net.minecraft.world.phys.HitResult;
 
 public class RedstoneProjectile extends ThrowableItemProjectile {
 
+    // 10 тиков = 0,5 секунды
     public static final int REDSTONE_TIMER = 10;
 
     public RedstoneProjectile(
@@ -39,31 +33,49 @@ public class RedstoneProjectile extends ThrowableItemProjectile {
     }
 
     @Override
-        protected void onHit(HitResult result) {
-            super.onHit(result);
+    protected void onHit(HitResult result) {
+        super.onHit(result);
 
-            if (!level().isClientSide) {
+        if (!level().isClientSide) {
 
-                if (result instanceof BlockHitResult blockHit) {
+            if (result instanceof BlockHitResult blockHit) {
 
-                    BlockPos hitBlockPos =
-                        level().setBlock(
-                            redstonePos,
-                            Blocks.REDSTONE_BLOCK.defaultBlockState(),
-                            3,
-                            discard()
-                        );
-                    blockHit.getBlockPos();
+                // ОШИБКА БЫЛА ЗДЕСЬ:
+                // level().setBlock(...) возвращает boolean,
+                // поэтому его нельзя записывать в BlockPos.
+                //
+                // Получаем позицию блока, в который попал projectile.
+                BlockPos hitBlockPos = blockHit.getBlockPos();
+
+                // ОШИБКА БЫЛА ЗДЕСЬ:
+                // redstonePos в старом коде вообще не был создан.
+                //
+                // Берём соседнюю клетку со стороны попадания.
+                BlockPos redstonePos =
+                        hitBlockPos.relative(blockHit.getDirection());
 
                 if (level() instanceof ServerLevel serverLevel) {
 
                     TemporaryRedstoneManager.addRedstone(
-                           serverLevel,
-                           hitBlockPos,
-                           REDSTONE_TIMER
+                            serverLevel,
+
+                            // ОШИБКА БЫЛА ЗДЕСЬ:
+                            // раньше передавался hitBlockPos,
+                            // то есть сам блок, в который попали.
+                            // Нам нужна свободная клетка рядом с ним.
+                            redstonePos,
+
+                            REDSTONE_TIMER
                     );
                 }
             }
+
+            // ОШИБКА БЫЛА ЗДЕСЬ:
+            // discard() нельзя передавать внутрь setBlock().
+            // discard() ничего не возвращает и просто удаляет projectile.
+            discard();
         }
+    }
 }
-}
+
+
