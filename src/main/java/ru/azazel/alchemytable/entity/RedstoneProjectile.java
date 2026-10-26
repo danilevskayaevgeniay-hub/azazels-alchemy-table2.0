@@ -1,20 +1,19 @@
 package ru.azazel.alchemytable.entity;
 
 import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
+import net.minecraft.core.Direction;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.projectile.ThrowableItemProjectile;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.HitResult;
+import ru.azazel.alchemytable.block.ModBlocks;
 
 public class RedstoneProjectile extends ThrowableItemProjectile {
-
-    // 10 тиков = 0,5 секунды
-    public static final int REDSTONE_TIMER = 10;
 
     public RedstoneProjectile(
             EntityType<? extends RedstoneProjectile> entityType,
@@ -36,45 +35,58 @@ public class RedstoneProjectile extends ThrowableItemProjectile {
     protected void onHit(HitResult result) {
         super.onHit(result);
 
-        if (!level().isClientSide) {
+        if (level().isClientSide) {
+            return;
+        }
 
-            if (result instanceof BlockHitResult blockHit) {
+        if (result instanceof BlockHitResult blockHit) {
 
-                // ОШИБКА БЫЛА ЗДЕСЬ:
-                // level().setBlock(...) возвращает boolean,
-                // поэтому его нельзя записывать в BlockPos.
-                //
-                // Получаем позицию блока, в который попал projectile.
-                BlockPos hitBlockPos = blockHit.getBlockPos();
+            // Блок, в который попала палочка
+            BlockPos hitPos = blockHit.getBlockPos();
 
-                // ОШИБКА БЫЛА ЗДЕСЬ:
-                // redstonePos в старом коде вообще не был создан.
-                //
-                // Берём соседнюю клетку со стороны попадания.
-                BlockPos redstonePos =
-                        hitBlockPos.relative(blockHit.getDirection());
+            // Сначала пробуем поставить источник
+            // со стороны, куда попал projectile
+            BlockPos signalPos =
+                    hitPos.relative(blockHit.getDirection());
 
-                if (level() instanceof ServerLevel serverLevel) {
+            // Если эта клетка занята,
+            // ищем любую свободную клетку рядом
+            if (!level().isEmptyBlock(signalPos)) {
 
-                    TemporaryRedstoneManager.addRedstone(
-                            serverLevel,
+                signalPos = null;
 
-                            // ОШИБКА БЫЛА ЗДЕСЬ:
-                            // раньше передавался hitBlockPos,
-                            // то есть сам блок, в который попали.
-                            // Нам нужна свободная клетка рядом с ним.
-                            redstonePos,
+                for (Direction direction : Direction.values()) {
 
-                            REDSTONE_TIMER
-                    );
+                    BlockPos checkPos =
+                            hitPos.relative(direction);
+
+                    if (level().isEmptyBlock(checkPos)) {
+                        signalPos = checkPos;
+                        break;
+                    }
                 }
             }
 
-            // ОШИБКА БЫЛА ЗДЕСЬ:
-            // discard() нельзя передавать внутрь setBlock().
-            // discard() ничего не возвращает и просто удаляет projectile.
-            discard();
+            // Если нашли свободное место,
+            // ставим временный источник Redstone
+            if (signalPos != null) {
+
+                level().setBlock(
+                        signalPos,
+                        ModBlocks.REDSTONE_PULSE.defaultBlockState(),
+                        Block.UPDATE_ALL
+                );
+
+                // Дополнительно обновляем сам блок,
+                // в который попали
+                level().updateNeighborsAt(
+                        hitPos,
+                        ModBlocks.REDSTONE_PULSE
+                );
+            }
         }
+
+        discard();
     }
 }
 
