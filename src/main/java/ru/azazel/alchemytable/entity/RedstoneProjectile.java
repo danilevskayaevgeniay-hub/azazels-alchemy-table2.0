@@ -39,14 +39,33 @@ public class RedstoneProjectile extends ThrowableItemProjectile {
     }
 
     @Override
-    protected void onHit(HitResult result) {
-        super.onHit(result);
+        protected void onHit(HitResult result) {
+            super.onHit(result);
 
-        if (!level().isClientSide) {
+            if (!level().isClientSide) {
 
-            
+                if (result instanceof BlockHitResult blockHit) {
 
-            discard();
+                    BlockPos hitBlockPos =
+                    blockHit.getBlockPos();
+
+                    BlockPos RedstonePos =
+                    hitBlockPos.relative(
+                            blockHit.getDirection()
+                    );
+
+                if (level()
+                    .getBlockState(RedstonePos)
+                    .canBeReplaced()) {
+
+                if (level() instanceof ServerLevel serverLevel) {
+
+                    TemporaryRedstoneManager.addRedstone(
+                           serverLevel,
+                           RedstonePos,
+                           REDSTONE_TIMER
+                    );
+                }
+            }
         }
-    }
 }
