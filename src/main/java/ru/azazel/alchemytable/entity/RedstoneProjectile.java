@@ -60,3 +60,4 @@ public class RedstoneProjectile extends ThrowableItemProjectile {
             }
         }
 }
+}
