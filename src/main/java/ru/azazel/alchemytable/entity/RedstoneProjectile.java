@@ -50,8 +50,8 @@ public class RedstoneProjectile extends ThrowableItemProjectile {
                         level().setBlock(
                             redstonePos,
                             Blocks.REDSTONE_BLOCK.defaultBlockState(),
-                            3
-                            discard();
+                            3,
+                            discard()
                         );
                     blockHit.getBlockPos();
 
