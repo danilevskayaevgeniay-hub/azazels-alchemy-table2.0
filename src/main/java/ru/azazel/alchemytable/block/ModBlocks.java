@@ -23,6 +23,15 @@ public final class ModBlocks {
                             .noOcclusion()
             )
     );
+    public static final Block REDSTONE_PULSE = Registry.register(
+            BuiltInRegistries.BLOCK,
+            AzazelsAlchemyTable.id("redstone_pulse")
+            new RedstonePulseBlock(
+                    BlockBehaviour.Properties.of()
+                            .noCollision()
+                            .noOcclusion()
+            )
+    );
 
     private static Block registerBlock(String name, Block block) {
         ResourceLocation id = ResourceLocation.fromNamespaceAndPath(
