@@ -18,7 +18,7 @@ import ru.azazel.alchemytable.block.ModBlocks;
 public class RedstoneProjectile extends ThrowableItemProjectile {
 
     // 10 тиков = 0,5 секунды
-    private static final int REDSTONE_TIMER = 40;
+    private static final int REDSTONE_TIMER = 20;
 
     // Место, куда временно поставили блок редстоуна
     private BlockPos redstonePos = null;
