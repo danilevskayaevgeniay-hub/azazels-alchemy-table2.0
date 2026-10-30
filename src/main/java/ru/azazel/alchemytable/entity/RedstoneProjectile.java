@@ -113,7 +113,7 @@ public class RedstoneProjectile extends ThrowableItemProjectile {
                 // Он гарантированно выдаёт сигнал 15.
                 level().setBlock(
                         redstonePos,
-                        Blocks.REDSTONE_PULSE.defaultBlockState(),
+                        ModBlocks.REDSTONE_PULSE.defaultBlockState(),
                         Block.UPDATE_ALL
                 );
 
@@ -159,7 +159,7 @@ public class RedstoneProjectile extends ThrowableItemProjectile {
                         redstonePos != null
                         && level()
                         .getBlockState(redstonePos)
-                        .is(Blocks.REDSTONE_PULSE)
+                        .is(ModBlocks.REDSTONE_PULSE)
                 ) {
 
                     // Убираем временный блок.
