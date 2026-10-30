@@ -12,7 +12,7 @@ import net.minecraft.world.level.block.state.BlockState;
 
 public class RedstonePulseBlock extends Block {
 
-    private static final int PULSE_DURATION_TICKS = 40;
+    private static final int PULSE_DURATION_TICKS = 20;
 
     public RedstonePulseBlock(Properties properties) {
         super(properties);
