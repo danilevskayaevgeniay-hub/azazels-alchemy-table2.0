@@ -25,10 +25,10 @@ public final class ModBlocks {
     );
     public static final Block REDSTONE_PULSE = Registry.register(
             BuiltInRegistries.BLOCK,
-            AzazelsAlchemyTable.id("redstone_pulse")
+            AzazelSAlchemyTable.id("redstone_pulse"),
             new RedstonePulseBlock(
                     BlockBehaviour.Properties.of()
-                            .noCollision()
+                            .noCollission()
                             .noOcclusion()
             )
     );
