@@ -13,11 +13,12 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
+import ru.azazel.alchemytable.block.ModBlocks;
 
 public class RedstoneProjectile extends ThrowableItemProjectile {
 
     // 10 тиков = 0,5 секунды
-    private static final int REDSTONE_TIMER = 10;
+    private static final int REDSTONE_TIMER = 20;
 
     // Место, куда временно поставили блок редстоуна
     private BlockPos redstonePos = null;
@@ -112,7 +113,7 @@ public class RedstoneProjectile extends ThrowableItemProjectile {
                 // Он гарантированно выдаёт сигнал 15.
                 level().setBlock(
                         redstonePos,
-                        Blocks.REDSTONE_BLOCK.defaultBlockState(),
+                        Blocks.REDSTONE_PULSE.defaultBlockState(),
                         Block.UPDATE_ALL
                 );
 
@@ -158,7 +159,7 @@ public class RedstoneProjectile extends ThrowableItemProjectile {
                         redstonePos != null
                         && level()
                         .getBlockState(redstonePos)
-                        .is(Blocks.REDSTONE_BLOCK)
+                        .is(Blocks.REDSTONE_PULSE)
                 ) {
 
                     // Убираем временный блок.
