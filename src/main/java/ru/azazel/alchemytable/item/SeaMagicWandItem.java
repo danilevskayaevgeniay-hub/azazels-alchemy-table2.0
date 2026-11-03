@@ -35,6 +35,8 @@ public class SeaMagicWandItem extends Item {
                     )
             );
 
+            stack.hurtAndBreak(1, player, LivingEntity.getSlotForHand(hand));
+
             player.getCooldowns().addCooldown(this, 20);
         }
 
