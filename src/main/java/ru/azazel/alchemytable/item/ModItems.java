@@ -20,32 +20,32 @@ public final class ModItems {
     public static final Item LIGHT_MAGIC_WAND = Registry.register(
             BuiltInRegistries.ITEM,
             AzazelSAlchemyTable.id("light_magic_wand"),
-            new ChargedMagicWandItem(new Item.Properties().stacksTo(1))
+            new ChargedMagicWandItem(new Item.Properties().stacksTo(1).durability(8))
     );
     public static final Item FLAME_MAGIC_WAND = Registry.register(
             BuiltInRegistries.ITEM,
             AzazelSAlchemyTable.id("flame_magic_wand"),
-            new FlameMagicWandItem(new Item.Properties().stacksTo(1))
+            new FlameMagicWandItem(new Item.Properties().stacksTo(1).durability(8))
     );
     public static final Item SEA_MAGIC_WAND = Registry.register(
             BuiltInRegistries.ITEM,
             AzazelSAlchemyTable.id("sea_magic_wand"),
-            new SeaMagicWandItem(new Item.Properties().stacksTo(1))
+            new SeaMagicWandItem(new Item.Properties().stacksTo(1).durability(8))
     );
     public static final Item REDSTONE_MAGIC_WAND = Registry.register(
             BuiltInRegistries.ITEM,
             AzazelSAlchemyTable.id("redstone_magic_wand"),
-            new RedstoneMagicWandItem(new Item.Properties().stacksTo(1))
+            new RedstoneMagicWandItem(new Item.Properties().stacksTo(1).durability(8))
     );
     public static final Item SEEKING_MAGIC_WAND = Registry.register(
             BuiltInRegistries.ITEM,
             AzazelSAlchemyTable.id("seeking_magic_wand"),
-            new SeekingMagicWandItem(new Item.Properties().stacksTo(1))
+            new SeekingMagicWandItem(new Item.Properties().stacksTo(1).durability(8))
     );
     public static final Item WIND_MAGIC_WAND = Registry.register(
             BuiltInRegistries.ITEM,
             AzazelSAlchemyTable.id("wind_magic_wand"),
-            new WindMagicWandItem(new Item.Properties().stacksTo(1))
+            new WindMagicWandItem(new Item.Properties().stacksTo(1).durability(8))
     );
     public static final Item CRYSTAL_SPIDER_SPAWN_EGG = Registry.register(
             BuiltInRegistries.ITEM,
