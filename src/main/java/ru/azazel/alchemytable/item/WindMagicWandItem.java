@@ -38,7 +38,12 @@ public class WindMagicWandItem extends Item {
 
             level.addFreshEntity(projectile);
 
-            stack.hurtAndBreak(1, player, LivingEntity.getSlotForHand(hand));
+            if (stack.getDamageValue() + 1 >= stack.getMaxDamage()) {
+                player.setItemInHand(hand, new ItemStack(ModItems.MAGIC_WAND));
+            }
+            else{
+                stack.setDamageValue(stack.getDamageValue() + 1);
+            }
 
             player.getCooldowns().addCooldown(this, 20);
         }
