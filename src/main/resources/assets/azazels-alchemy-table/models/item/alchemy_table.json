@@ -1,6 +1,4 @@
 {
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "azazels-alchemy-table:item/alchemy_table"
-  }
+  "parent": 
+  "azazels-alchemy-table:block/alchemy_table"
 }
