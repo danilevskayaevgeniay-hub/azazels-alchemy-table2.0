@@ -69,6 +69,10 @@ public final class ModItems {
             entries.accept(WIND_MAGIC_WAND);
             entries.accept(SEEKING_MAGIC_WAND);
             entries.accept(REDSTONE_MAGIC_WAND);
+        });
+        ItemGroupEvents.modifyEntriesEvent(
+                CreativeModeTabs.SPAWN_EGGS
+        ).register(entries -> {
             entries.accept(CRYSTAL_SPIDER_SPAWN_EGG);
         });
     }
