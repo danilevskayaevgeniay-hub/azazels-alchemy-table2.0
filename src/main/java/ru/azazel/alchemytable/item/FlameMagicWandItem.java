@@ -3,6 +3,7 @@ package ru.azazel.alchemytable.item;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
@@ -36,6 +37,8 @@ public class FlameMagicWandItem extends Item {
             );
 
             level.addFreshEntity(projectile);
+
+            stack.hurtAndBreak(1, player, LivingEntity.getSlotForHand(hand));
 
             player.getCooldowns().addCooldown(this, 20);
         }
